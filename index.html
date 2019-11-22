@@ -1,1 +1,55 @@
+<!DOCTYPE html>
 
+  <html><head><title>DataSheet</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+  </script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+  </script>
+
+  <script type="text/javascript"> 
+
+    var Trips = [             
+       {name: 'Chicago', mi1: 329, ga2: 10.6},
+       {name: 'St Louis', mi1: 284	, ga2: 10.5},
+       {name: 'Indianapolis', mi1: 122, ga2: 3.7},
+       {name: 'Nashville', mi1: 191, ga2: 6.4},
+       {name: 'Cinncinati', mi1: 132	, ga2: 3.9}
+   ];
+
+   window.onload = function() { 
+       document.getElementById('showData').onclick = function() {
+            tbl = document.getElementById("dataTable");   
+
+             for(i=0; i < Trips.length; i++) {
+                 var miles = parseFloat(Trips[i].mi1) 
+				var gallons= parseFloat(Trips[i].ga2);
+                 var mpg = (miles / gallons).toFixed(1);
+
+                 var row = document.createElement("tr");        // create table row
+                 var rowTxt = "<td>" + Trips[i].name + "</td>"; 
+                 rowTxt += "<td>" + Trips[i].mi1 + "</td>";             
+                 rowTxt +=  "<td>" + Trips[i].ga2 + "</td><td>" + mpg + "</td>";
+                 row.innerHTML = rowTxt;
+                 tbl.appendChild(row);
+             }
+       };
+  }; 
+
+  </script>
+</head><body>
+
+  <div class = 'container'>
+       <p>Trip Data</p>
+
+       <form>
+           <button type="button" class="btn btn-primary" id="showData">Click Here</button> 
+       </form><br>
+
+       <table id='dataTable' class='table'>
+          <tr><th>Destination</th><th>Miles</th><th>Gallons</th><th>MPG</th></tr>
+       </table>     
+
+  </div> <!-- end class='container' -->
+
+</body></html>
