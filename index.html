@@ -9,7 +9,7 @@
 	 
 	  <input type="button" id='btn1' value="Business Majors">
   
-      <h1> We filter our dataset by major </h1>
+      <h2> We filter our dataset by major </h2>
   
 <script>
    document.addEventListener('DOMContentLoaded', function() {      // when page has loaded, more or less
@@ -23,7 +23,7 @@
                 if (request.status == 200) {
                      var contents = "<table cellspacing='5'><tr><td>Name</td><td>Major</td><td>Midterm</td><td>Final<td></tr>"
                      for(i = 0; i < data.length; i++) {         // generate the HTML table
-                         contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].major + "</td><td>" + data[i].midterm + + data[i].final +"</td></tr>";
+                         contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].major + "</td><td>" + data[i].midterm + data[i].final +"</td></tr>";
                      }
                      contents += "</table>";
                 
