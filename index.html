@@ -46,14 +46,10 @@
             request.onload = function() {                       // when the data comes back...
                 var data = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
                 if (request.status == 200) {
-                      <table cellspacing='12'>
-         <tr><th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
-            {{#each rows}}
-                 <tr>
-                    <td>{{Name}}</td><td>{{Major}}</td><td>{{Midterm}}</td><td>{{Final}}</td>
-                 </tr>
-            {{/each}}
-			</table>
+				
+                     var templateText = document.getElementById('tableTemplate').innerHTML;
+             	var compiledTemplateText = Handlebars.compile(templateText);   // get and compile template code
+              	
                 
                      document.querySelector('#result').innerHTML = contents;
                 }
