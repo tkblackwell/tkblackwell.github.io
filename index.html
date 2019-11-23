@@ -12,7 +12,7 @@
 <!-- the template  -->
 <script type="text/x-handlebars-template" id="tableTemplate">
   <table cellspacing='12'>
-         <tr> <th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
+         <tr><th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
             {{#each rows}}
                  <tr>
                     <td>{{Name}}</td><td>{{Major}}</td><td>{{Midterm}}</td><td>{{Final}}</td>
@@ -45,11 +45,14 @@
             request.onload = function() {                       // when the data comes back...
                 var data = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
                 if (request.status == 200) {
-                     var contents = "<table cellspacing='5'><tr><td>Name</td><td>Major</td><td>Midterm</td><td>Final<td></tr>"
-                     for(i = 0; i < data.length; i++) {         // generate the HTML table
-                         contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].major + "</td><td>" + data[i].midterm + data[i].final +"</td></tr>";
-                     }
-                     contents += "</table>";
+                      <table cellspacing='12'>
+         <tr><th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
+            {{#each rows}}
+                 <tr>
+                    <td>{{Name}}</td><td>{{Major}}</td><td>{{Midterm}}</td><td>{{Final}}</td>
+                 </tr>
+            {{/each}}
+			</table>
                 
                      document.querySelector('#result').innerHTML = contents;
                 }
@@ -58,7 +61,8 @@
                 }
           }
           request.send(null);
-     };
+        };
+     }
   });
   </script>
   </body>
