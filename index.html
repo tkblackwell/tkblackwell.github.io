@@ -2,8 +2,11 @@
   <html><head>  <meta charset="UTF-8"> <title>Major Lists</title>
   
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js">
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
 
 <!-- the template  -->
@@ -18,6 +21,8 @@
 			</table>
 </script>
 
+<div class="container">
+
   <body style='margin-left: 32px;'>
      <h1> Select a Major </h1>
 
@@ -25,8 +30,10 @@
 	 <input type="button" id='btn1' value="Business Majors">
   
       <h2> We filter our dataset by major </h2>
-	  
-   <div id="result"></div>
+	  </div>   <!-- end class='container'   -->
+   
+   
+  <div id="result"></div>
    
 <script>
    document.addEventListener('DOMContentLoaded', function() {      // when page has loaded, more or less
