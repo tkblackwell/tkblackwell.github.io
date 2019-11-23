@@ -1,20 +1,28 @@
 <!DOCTYPE html>
   <html><head>  <meta charset="UTF-8"> <title>Major Lists</title>
-  </head>
+  
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js">
 </script>
+</head>
 
 <!-- the template  -->
-<script id="text-template" type="text/x-handlebars-template">
+<script type="text/x-handlebars-template" id="tableTemplate">
+  <table cellspacing='12'>
+         <tr> <th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
+            {{#each rows}}
+                 <tr>
+                    <td>{{Name}}</td><td>{{Major}}</td><td>{{Midterm}}</td><td>{{Final}}</td>
+                 </tr>
+            {{/each}}
+			</table>
 </script>
 
   <body style='margin-left: 32px;'>
      <h1> Select a Major </h1>
 
      <input type="button" id='btn' value="CIT Majors">
-	 
-	  <input type="button" id='btn1' value="Business Majors">
+	 <input type="button" id='btn1' value="Business Majors">
   
       <h2> We filter our dataset by major </h2>
 	  
