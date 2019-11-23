@@ -50,9 +50,10 @@
                      var templateText = document.getElementById('tableTemplate').innerHTML;
              	var compiledTemplateText = Handlebars.compile(templateText);   // get and compile template code
               	
-                
+                compiledHtml = compiledTemplateText({ rows: data })                  // populate the template with the data 
                      document.querySelector('#result').innerHTML = contents;
                 }
+				  
                 else {
                     document.querySelector('#result').innerHTML = "There was an error.";
                 }
