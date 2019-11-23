@@ -5,6 +5,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js">
 </script>
 
+<!-- the template  -->
+<script id="text-template" type="text/x-handlebars-template">
+
   <body style='margin-left: 32px;'>
      <h1> Select a Major </h1>
 
@@ -13,7 +16,9 @@
 	  <input type="button" id='btn1' value="Business Majors">
   
       <h2> We filter our dataset by major </h2>
-  
+	  
+   <div id="result"></div>
+   
 <script>
    document.addEventListener('DOMContentLoaded', function() {      // when page has loaded, more or less
         document.querySelector('#btn').onclick = function() {		// attach event handler to button
