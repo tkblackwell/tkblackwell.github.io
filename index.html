@@ -37,14 +37,22 @@
   <div id="result"></div>
    
 <script>
+  function getData(selected_meal) {
    document.addEventListener('DOMContentLoaded', function() {      // when page has loaded, more or less
         document.querySelector('#btn').onclick = function() {		// attach event handler to button
 		    document.querySelector('#btn1').onclick = function() {
+
             var request = new XMLHttpRequest();
             request.open('GET', 'cit5students.json');                 // GET request for data
  
             request.onload = function() {                       // when the data comes back...
                 var data = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
+				
+				 meal_items = data.filter(getMajor)       // meal_itmes array will contain the filtered data using the getMeal() function
+         function getMajor (item) {
+            return item.major == selected_major;   // the new meal_items array will contain only items for the selected meal
+         }
+		 
                 if (request.status == 200) {
 				
                      var templateText = document.getElementById('tableTemplate').innerHTML;
