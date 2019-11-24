@@ -59,7 +59,7 @@
               var compiledTemplateText = Handlebars.compile(templateText);   // get and compile template code
              
                 compiledHtml = compiledTemplateText({ rows: major_items })                  // populate the template with the data
-                     document.querySelector('result').innerHTML = compiledHtml;
+                     document.querySelector('#result').innerHTML = compiledHtml;
                 }
  
                 else {
