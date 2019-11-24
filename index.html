@@ -46,9 +46,9 @@
             request.onload = function() {                       // when the data comes back...
                 var data = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
 
-major_items = data.filter(getMajor)       // meal_itmes array will contain the filtered data using the getMeal() function
+			major_items = data.filter(getMajor)       // meal_itmes array will contain the filtered data using the getMeal() function
          
-function getMajor (item) {
+			function getMajor (item) {
             return item.major == selected_major;   // the new meal_items array will contain only items for the selected meal
           }
 
@@ -58,7 +58,7 @@ function getMajor (item) {
               var compiledTemplateText = Handlebars.compile(templateText);   // get and compile template code
              
                 compiledHtml = compiledTemplateText({ rows: major_items })                  // populate the template with the data
-                     document.querySelector('result').innerHTML = compiledHtml;
+                     document.querySelector('#result').innerHTML = compiledHtml;
                 }
  
                 else {
