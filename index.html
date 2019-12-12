@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+  <html><head>  <meta charset="UTF-8"> <title>Major Lists</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
+<!-- the template  -->
+<script type="text/x-handlebars-template" id="tableTemplate">
+   <table cellspacing='12' class="table table-striped">
+         <tr><th>Name</th><th>Major</th><th>Midterm</th><th>Final</th></tr>
+            {{#each rows}}
+                 <tr>
+                    <td>{{name}}</td><td>{{major}}</td><td>{{midterm}}</td><td>{{final}}</td>
+                 </tr>
+            {{/each}}
+			</table>
+</script>
+</head>
+
+<div class="container">
+
+  <body style='margin-left: 32px;'>
+     <h1> Select a Major </h1>
+
+     <button input type="button" class="btn btn-success" id='btn' value="CIT Majors" onClick="getData('CIT')">CIT Majors</button> <br>
+	 <button input type="button" class="btn btn-success" id='btn1' value="Business Majors" onClick="getData('BUS')">Business Majors</button> 
+    
+      <h3> We filter our dataset by major </h3>
+	  </div>   <!-- end class='container'   -->
+   
+   
+  <div id="result"></div>
+   
+<script>
+  function getData(selected_major) {
+   
+       
+            var request = new XMLHttpRequest();
+            request.open('GET', 'cit5students.json');                 // GET request for data
+ 
+            request.onload = function() {                       // when the data comes back...
+                var data = JSON.parse(request.responseText);    // convert from JSON to regular JavaScript array of objects
+
+			major_items = data.filter(getMajor)       // meal_itmes array will contain the filtered data using the getMeal() function
+         
+			function getMajor (item) {
+            return item.major == selected_major;   // the new meal_items array will contain only items for the selected meal
+          }
+
+                if (request.status == 200) {
+
+                var templateText = document.getElementById('tableTemplate').innerHTML;
+              var compiledTemplateText = Handlebars.compile(templateText);   // get and compile template code
+             
+                compiledHtml = compiledTemplateText({ rows: major_items })                  // populate the template with the data
+                     document.querySelector('#result').innerHTML = compiledHtml;
+                }
+ 
+                else {
+                    document.querySelector('#result').innerHTML = "There was an error.";
+                }
+          }
+          request.send(null);
+  };
+  </script>
